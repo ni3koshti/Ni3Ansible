@@ -1,6 +1,6 @@
 ---
-- name: Enable Intranet Services
-  hosts: node1.techbeatly.com
+- name: Webserver Ni3World 
+  hosts: node1
   become: yes
   tasks:
     - name: Install httpd and firewalld
@@ -27,7 +27,7 @@
         state: started
     - name: Test html page is installed
       copy:
-        content: "Welcome to the example.com intranet!\n"
+        content: "Welcome to the Ni3World intranet!\n"
         dest: /var/www/html/index.html
 - name: Test intranet web server
   hosts: localhost
@@ -35,6 +35,6 @@
   tasks:
     - name: connect to intranet webserver
       uri: 
-        url: http://lab.techbeatly.com
+        url: http://node1
         status_code: 200
 
